@@ -1,0 +1,22 @@
+Algorithm
+Handle Edge Case:
+
+If the length of the string is 1, return 1 if the character is not '0', otherwise return 0.
+Initialize the DP Array:
+
+Allocate memory for dp of size n+1.
+Set dp[n] to 1 (one way to decode an empty string).
+Set dp[n-1] based on whether the last character is '0' or not.
+Fill the DP Array:
+
+Iterate backward from i = n-2 to 0.
+For each character at index i:
+If s[i] is '0', set dp[i] to 0 (invalid decoding).
+If s[i] is '1' or '2':
+Check if s[i] can be part of a two-digit number with s[i+1].
+If s[i] is '2' and s[i+1] is >= '7', it can only be decoded in one way (as a single digit).
+Otherwise, add the number of ways to decode both one-character and two-character substrings.
+For characters greater than '2', only one-digit decoding is possible.
+Return the Result:
+
+The result will be in dp[0], representing the number of ways to decode the entire string.
